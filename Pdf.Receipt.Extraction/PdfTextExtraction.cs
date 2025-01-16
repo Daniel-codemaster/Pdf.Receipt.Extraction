@@ -5,17 +5,10 @@ using System.Globalization;
 using System.Text.RegularExpressions;
 using System.IO;
 using System.Collections.Generic;
-using PInnovationFiscalApp.Lib;
 using System;
-using ReceiptPdfExtraction.Lib.Models;
-using FdmsHelper.Lib.Enums;
-using ReceiptPdfExtraction.Lib.Strategies;
-using FdmsHelper.Lib.Models;
 using Newtonsoft.Json;
-using FdmsHelper.Lib.Helpers;
-using iText.Kernel.Geom;
 
-namespace ReceiptPdfExtraction.Lib
+namespace Pdf.Receipt.Extraction
 {
     public class PdfTextExtraction
     {
@@ -344,7 +337,7 @@ namespace ReceiptPdfExtraction.Lib
         {
             FdmsBuyer? buyer = null;
             List<string> customerDataLines = new List<string>();
-            var customerPtn = JsonConvert.DeserializeObject<ICustomerDataPattern>(pattern, JsonHelper.FdmsOptions);
+            var customerPtn = JsonConvert.DeserializeObject<ICustomerDataPattern>(pattern, JsonHelper.Options);
             if (customerPtn != null)
             {
                 var customStrategy = new CustomLocationTextExtractionStrategy();
